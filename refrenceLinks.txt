@@ -1,0 +1,28 @@
+/*
+ * File: refrenceLinks.txt
+ * Project: firebase-node
+ * File Created: Monday, 6th April 2020 7:10:45 pm
+ * Author: digvijay (rathore.digvijay10@gmail.com)
+ */
+
+
+https://www.techotopia.com/index.php/Sending_Firebase_Cloud_Messages_from_a_Node.js_Server
+
+https://firebase.google.com/docs/cloud-messaging/auth-server
+
+https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages/send
+
+https://firebase.google.com/docs/cloud-messaging/xmpp-server-ref#notification-payload-support
+
+https://firebase.google.com/docs/cloud-messaging/http-server-ref
+
+https://firebase.google.com/docs/cloud-messaging/send-message#admin
+
+https://github.com/firebase/firebase-admin-node
+
+https://www.npmjs.com/package/firebase-admin
+
+https://firebase.google.com/docs/reference/admin/node/admin.messaging.Messaging
+
+https://firebase.google.com/docs/admin/setup
+
