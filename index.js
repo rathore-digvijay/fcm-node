@@ -9,7 +9,7 @@ const fcmService = require('./fcm-notify.js');
 
 const data = {};
 // mandatory, string or array of strings
-data.receivers = "abcdef"; // OR ["abcdef", "jklmno"]
+data.receivers = "web-app"; // OR ["abcdef", "jklmno"]
 // mandatory, string, notification title
 data.title = "Hello";
 // mandatory, string, notification body
