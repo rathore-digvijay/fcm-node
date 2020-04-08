@@ -8,8 +8,9 @@
 // Add the SDK
 const fcm_admin = require('firebase-admin');
 var serviceAccount = require("./fcmConfig.json");
-// var token = "czh7BEAcMOD2ed9xTzHOaP:APA91bFC3QHbwCUaQtrS-XCnliom74i38ckAu3_96AjZw0CQCq1ZzUtitohkw_NOqTtYU7ll7zByjuiKO8lbvHFe2TI-H7oTmXNPZSP5KV6_tv3ZZRc8OLnJ9TGkukzG3sq-oDwF2Nbi";
-var token = "abcdfres";
+var token = "czh7BEAcMOD2ed9xTzHOaP:APA91bFC3QHbwCUaQtrS-XCnliom74i38ckAu3_96AjZw0CQCq1ZzUtitohkw_NOqTtYU7ll7zByjuiKO8lbvHFe2TI-H7oTmXNPZSP5KV6_tv3ZZRc8OLnJ9TGkukzG3sq-oDwF2Nbi";
+var firebaseApp = {};
+
 /**
  * Initialize the SDK
  */
@@ -22,7 +23,7 @@ function initializeFcm() {
     //     credential: admin.credential.applicationDefault(),
     //     databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
     // });
-    fcm_admin.initializeApp({
+    firebaseApp = fcm_admin.initializeApp({
         credential: fcm_admin.credential.cert(serviceAccount),
         databaseURL: "https://slots-push-notification-test1.firebaseio.com"
     });
@@ -40,6 +41,13 @@ function sendToDevice(registrationTokens, payload, options) {
     fcm_admin.messaging().sendToDevice(token, payload, options)
         .then(function (response) {
             console.log("Successfully sent message:", response);
+            firebaseApp.delete()  // for deleting the current appp instance after successfully sending the push notification
+                .then(function() {
+                    console.log("App deleted successfully");
+                 })
+                .catch(function(error) {
+                    console.log("Error deleting app:", error);
+                });
         })
         .catch(function (error) {
             console.log("Error sending message:", error);

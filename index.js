@@ -5,8 +5,8 @@
  * Author: Digvijay (rathore.digvijay10@gmail.com)
  */
 
-const fcmService = require('./fcm-notify.js');
-
+const fcmService = require('./fcm-notify.js'),
+schedule = require('node-schedule');
 const data = {};
 // mandatory, string or array of strings
 data.receivers = "web-app"; // OR ["abcdef", "jklmno"]
@@ -20,4 +20,10 @@ data.options = {
     priority: "high"
 };
 
-fcmService.notify(data);
+// this scheduler will invoke at each hour.
+let scheduler = schedule.scheduleJob('0 */1 * * *', function(){         
+    console.log('The answer to life, the universe, and everything!',Date.now());
+    console.log("next job invokation -->",scheduler.nextInvocation());
+    fcmService.notify(data);
+});
+console.log("next job invokation -->",scheduler.nextInvocation());
